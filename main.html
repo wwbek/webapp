@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ogabek Gafforov - Business & Security Analytics</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --accent: #0ea5e9;
+            --text: #334155;
+            --secondary: #64748b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            padding: 5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 50%;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .highlight {
+            color: var(--primary);
+        }
+        
+        p.lead {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent);
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--dark);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-tag {
+            background-color: #e0f2fe;
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .experience-item {
+            margin-bottom: 2rem;
+        }
+        
+        .experience-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .experience-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+        }
+        
+        .experience-list {
+            list-style-type: none;
+        }
+        
+        .experience-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+        
+        textarea {
+            min-height: 150px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.25rem;
+        }
+        
+        .languages-section {
+            background-color: #f1f5f9;
+            padding: 3rem 0;
+        }
+        
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .language-item {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        
+        .language-name {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .proficiency {
+            color: var(--secondary);
+            font-size: 0.875rem;
+        }
+        
+        .achievements-list {
+            list-style-type: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .achievements-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .achievements-list li::before {
+            content: '🏆';
+            position: absolute;
+            left: 0;
+            font-size: 1.25rem;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .skills-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .contact-info {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            
+            .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .experience-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="container">
+        <div class="logo">Ogabek Gafforov</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#contact">Contact</a>
+            <a target="_blank" href="Ogabek_Gafforov_CV.pdf">CV</a>
+        </div>
+    </nav>
+    
+    <main>
+        <section class="hero container">
+            <div class="hero-content">
+                <h1>Hi, I'm <span class="highlight">Ogabek</span></h1>
+                <p class="lead">Business & Security Analytics student with experience in software testing, game testing, and logistics management.</p>
+                <a href="#contact" class="btn">Get in Touch</a>
+            </div>
+            <div class="hero-image">
+                <img src="cropped.JPG" alt="Ogabek Gafforov" />
+            </div>
+        </section>
+        
+        <section id="about" class="container">
+            <h2>About Me</h2>
+            <p>I'm a sophomore studying Business and Security Analytics at Vistula University with a strong academic background and diverse professional experience. My career spans from logistics management to software and game testing, giving me a unique perspective on quality assurance and business operations. I'm passionate about problem-solving, quality improvement, and effective communication across teams.</p>
+            
+            <div class="skills">
+                <span class="skill-tag">Game Testing</span>
+                <span class="skill-tag">Software Testing</span>
+                <span class="skill-tag">Quality Assurance</span>
+                <span class="skill-tag">Jira</span>
+                <span class="skill-tag">TestRail</span>
+                <span class="skill-tag">Logistics</span>
+                <span class="skill-tag">Negotiation</span>
+                <span class="skill-tag">Communication</span>
+                <span class="skill-tag">Critical Thinking</span>
+                <span class="skill-tag">Multilingual</span>
+            </div>
+        </section>
+        
+        <section id="experience" style="background-color: #f1f5f9;">
+            <div class="container">
+                <h2>Work Experience</h2>
+                
+                <div class="experience-item">
+                    <h3>Video Game Tester</h3>
+                    <div class="experience-meta">
+                        <span>Lionbridge Games, Warsaw, Poland</span>
+                        <span>Jun 2024 – Oct 2024</span>
+                    </div>
+                    <ul class="experience-list">
+                        <li>Tracked bugs in TestRail and reported bugs in Jira</li>
+                        <li>Partnered with developers to resolve critical problems, achieving a 98 percent bug resolution rate</li>
+                        <li>Delivered precise documentation and reports, streamlining communication between QA and development teams</li>
+                        <li>Contributed to improved gameplay mechanics by providing insights into user experience and interface usability</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>Software Test Engineer Intern</h3>
+                    <div class="experience-meta">
+                        <span>Web Studio, Tashkent, Uzbekistan</span>
+                        <span>Oct 2023 – Jan 2024</span>
+                    </div>
+                    <ul class="experience-list">
+                        <li>Collaborated with the development team to implement solutions, improving overall product quality and user satisfaction</li>
+                        <li>Conducted functional and usability testing for web applications, identifying and documenting over 50 critical issues</li>
+                        <li>Assisted in running test cases and verifying bug fixes using tools like Selenium and Postman, ensuring smooth development progress</li>
+                        <li>Provided feedback on user interface elements based on testing observations and common usability principles using Figma and InVision for design reviews</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>Trucking Dispatcher</h3>
+                    <div class="experience-meta">
+                        <span>Gobustan Extrade LLC, Logistics Department, Tashkent, Uzbekistan</span>
+                        <span>Sep 2022 – Sep 2023</span>
+                    </div>
+                    <ul class="experience-list">
+                        <li>Secured $9,000–$10,000 in weekly gross revenue for drivers by efficiently sourcing and booking high-value loads</li>
+                        <li>Built and maintained strong relationships with brokers, including leading companies such as J.B. Hunt, TQL, and Landstar, ensuring a consistent pipeline of quality contracts</li>
+                        <li>Utilized negotiation and communication skills to secure competitive rates and favorable terms for drivers</li>
+                        <li>Improved operational efficiency by implementing better load-tracking tools such as Truckstop.com and DAT Load Board, reducing downtime by 15%</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="education" class="container">
+            <h2>Education</h2>
+            
+            <div class="experience-item">
+                <h3>Bachelor of Business and Security Analytics</h3>
+                <div class="experience-meta">
+                    <span>Vistula University</span>
+                    <span>Oct 2023 – Current</span>
+                </div>
+                <ul class="experience-list">
+                    <li>Current Status: Sophomore</li>
+                    <li>GPA: 4.3/5</li>
+                    <li>Focusing on business analytics and security principles</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <h3>High School Degree</h3>
+                <div class="experience-meta">
+                    <span>School Number 48</span>
+                    <span>Sep 2012 – May 2023</span>
+                </div>
+                <ul class="experience-list">
+                    <li>GPA: 4.91/5</li>
+                    <li>Graduated with a focus on STEM subjects</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="languages" class="languages-section">
+            <div class="container">
+                <h2>Languages</h2>
+                <div class="languages-grid">
+                    <div class="language-item">
+                        <div class="language-name">English</div>
+                        <div class="proficiency">Fluent</div>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">Russian</div>
+                        <div class="proficiency">Fluent</div>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">Uzbek</div>
+                        <div class="proficiency">Native</div>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">Polish</div>
+                        <div class="proficiency">Intermediate</div>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">Kazakh</div>
+                        <div class="proficiency">Intermediate</div>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">Kirgiz</div>
+                        <div class="proficiency">Intermediate</div>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">Turkish</div>
+                        <div class="proficiency">Intermediate</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills" class="container">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skills-category">
+                    <h3>Technical Skills</h3>
+                    <ul class="experience-list">
+                        <li>Microsoft Office</li>
+                        <li>Bug Tracking Tools (Jira)</li>
+                        <li>Load Booking</li>
+                        <li>Logistics Management</li>
+                        <li>Quality Assurance</li>
+                        <li>Automation Tools</li>
+                        <li>Game Testing Tools</li>
+                        <li>Functional Testing</li>
+                        <li>Usability Testing</li>
+                        <li>Regression Testing</li>
+                        <li>Familiarity with Brokerage Platforms</li>
+                        <li>Basic UI/UX Design Principles</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h3>Soft Skills</h3>
+                    <ul class="experience-list">
+                        <li>Communication</li>
+                        <li>Collaboration</li>
+                        <li>Negotiation</li>
+                        <li>Critical Thinking</li>
+                        <li>Problem-Solving</li>
+                        <li>High-Pressure Decision-Making</li>
+                        <li>Time Management</li>
+                        <li>Adaptability</li>
+                        <li>Detail-Oriented</li>
+                        <li>Team Coordination</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="achievements" style="background-color: #f1f5f9;">
+            <div class="container">
+                <h2>Achievements</h2>
+                <ul class="achievements-list">
+                    <li>
+                        <strong>Top 5 Graduate, High School:</strong> Graduated with a GPA of 5/5 in the last three years of high school, demonstrating consistent academic excellence.
+                    </li>
+                    <li>
+                        <strong>IELTS score 6.5:</strong> Demonstrated strong proficiency in English, with a solid grasp across listening, reading, writing, and speaking.
+                    </li>
+                    <li>
+                        <strong>SAT score 1240:</strong> Scored 530 in English and 710 in Math, showcasing strong problem-solving and analytical skills.
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <div class="container">
+                <h2>Contact Me</h2>
+                <div class="contact-info">
+                    <p><strong>Address:</strong> Wiertnicza, Warsaw, Poland</p>
+                    <p><strong>Email:</strong> <a href="mailto:ogabekgafforov101@gmail.com">bekforrov@gmail.com</a></p>
+                    <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/ogabekgafforov" target="_blank">linkedin.com/in/ogabekgafforov</a></p>
+                </div>
+                
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Your message"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Ogabek Gafforov. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/ogabekgafforov">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
